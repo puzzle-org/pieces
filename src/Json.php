@@ -23,8 +23,6 @@ class Json
 
         if($json === false)
         {
-            $jsonLastError = json_last_error();
-
             throw new Exceptions\JsonEncodeError(json_last_error_msg());
         }
 
