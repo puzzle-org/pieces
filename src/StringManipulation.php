@@ -25,4 +25,29 @@ trait StringManipulation
 
         return $text;
     }
+    
+    private function isConvertibleToString($value)
+    {
+        if(is_scalar($value) || is_null($value))
+        {
+            return true;
+        }
+        
+        if(! is_object($value))
+        {
+            return false;
+        }
+        
+        return $value instanceof ConvertibleToString || method_exists($value, "__toString");
+    }
+    
+    private function convertToString($value)
+    {
+        if($this->isConvertibleToString($value))
+        {
+            return (string) $value;
+        }
+        
+        return gettype($value);
+    }
 }
