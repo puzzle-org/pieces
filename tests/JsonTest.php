@@ -78,13 +78,9 @@ class JsonTest extends \PHPUnit_Framework_TestCase
         $recursionData[] = &$recursionData;
 
         return [
-            /**
-             *  Test working with phpunit ~4.8 but breaking with phpunit ~5.7 :
-             *  Fatal error: Maximum function nesting level of '256' reached, aborting! in phpunit/phpunit/src/Framework/TestCase.php on line 2442
-             */
-            // 'JSON_ERROR_RECURSION' => [
-            //     'data' => $recursionData,
-            // ],
+            'JSON_ERROR_RECURSION' => [
+                'data' => $recursionData,
+            ],
             'JSON_ERROR_INF_OR_NAN NAN' => [
                 'data' => NAN,
             ],
