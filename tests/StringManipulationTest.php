@@ -2,13 +2,14 @@
 
 namespace Puzzle\Pieces;
 
+use PHPUnit\Framework\TestCase;
 use Puzzle\Assert\ExampleDataProvider;
 
 class NoConvertible { public function toString(){} }
 class Convertible { public function __toString(){ return ""; } }
 class ConvertibleByInterface implements ConvertibleToString { public function __toString(){ return ""; } }
 
-class StringManipulationTest extends \PHPUnit_Framework_TestCase
+class StringManipulationTest extends TestCase
 {
     use
         StringManipulation,
@@ -34,10 +35,11 @@ class StringManipulationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerRemoveAccentsThrowException
-     * @expectedException InvalidArgumentException
      */
     public function testRemoveAccentsThrowException($stringToCheck)
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->removeAccents($stringToCheck);
     }
 

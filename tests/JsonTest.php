@@ -2,7 +2,11 @@
 
 namespace Puzzle\Pieces;
 
-class JsonTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+use Puzzle\Pieces\Exceptions\JsonDecodeError;
+use Puzzle\Pieces\Exceptions\JsonEncodeError;
+
+class JsonTest extends TestCase
 {
 
     /**
@@ -30,10 +34,11 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerTestJsonDecodeException
-     * @expectedException Puzzle\Pieces\Exceptions\JsonDecodeError
      */
     public function testJsonDecodeException($depth, $json)
     {
+        $this->expectException(JsonDecodeError::class);
+
         Json::decode($json, false, $depth);
     }
 
@@ -65,10 +70,11 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerTestJsonEncodeException
-     * @expectedException Puzzle\Pieces\Exceptions\JsonEncodeError
      */
     public function testJsonEncodeException($data)
     {
+        $this->expectException(JsonEncodeError::class);
+
         Json::encode($data);
     }
 
