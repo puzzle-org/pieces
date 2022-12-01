@@ -8,6 +8,7 @@ phpunit = docker run -it --rm --name phpunit \
 	                 -v ${HOST_SOURCE_PATH}:${CONTAINER_SOURCE_PATH} \
 	                 -w ${CONTAINER_SOURCE_PATH} \
 	                 -u ${USER_ID}:${GROUP_ID} \
+	                 -e XDEBUG_MODE="coverage" \
 	                 ${IMAGE_NAME} \
 	                 vendor/bin/phpunit $1 $(CLI_ARGS)
 
