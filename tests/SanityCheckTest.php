@@ -2,16 +2,19 @@
 
 namespace Puzzle\Pieces;
 
-class SanityCheckTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class SanityCheckTest extends TestCase
 {
     use SanityCheck;
 
     /**
      * @dataProvider providerTestEnsureStringOnlyContainsDigitsThrowException
-     * @expectedException InvalidArgumentException
      */
     public function testEnsureStringOnlyContainsDigitsThrowException($stringToCheck)
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->ensureStringOnlyContainsDigits($stringToCheck);
     }
 
@@ -50,10 +53,11 @@ class SanityCheckTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerTestEnsureIsPositiveIntegerThrowException
-     * @expectedException InvalidArgumentException
      */
     public function testEnsureIsPositiveIntegerThrowException($toCheck)
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->ensureIsPositiveInteger($toCheck);
     }
 
@@ -91,10 +95,11 @@ class SanityCheckTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerTestEnsureIsStrictPositiveIntegerThrowException
-     * @expectedException InvalidArgumentException
      */
     public function testEnsureIsStrictPositiveIntegerThrowException($toCheck)
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->ensureIsStrictPositiveInteger($toCheck);
     }
 
@@ -133,10 +138,11 @@ class SanityCheckTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerTestEnsureIsPositiveFloatThrowException
-     * @expectedException InvalidArgumentException
      */
     public function testEnsureIsPositiveFloatThrowException($toCheck)
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->ensureIsPositiveFloat($toCheck);
     }
 
@@ -180,10 +186,11 @@ class SanityCheckTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerTestEnsureIsBooleanThrowException
-     * @expectedException InvalidArgumentException
      */
     public function testEnsureIsBooleanThrowException($toCheck)
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->ensureIsBoolean($toCheck);
     }
 

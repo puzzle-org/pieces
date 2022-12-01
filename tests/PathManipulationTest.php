@@ -2,7 +2,9 @@
 
 namespace Puzzle\Pieces;
 
-class PathManipulationTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class PathManipulationTest extends TestCase
 {
     use PathManipulation;
 

@@ -4,6 +4,7 @@ namespace Puzzle\Pieces\EventDispatcher\Adapters;
 
 use Puzzle\Pieces\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Contracts\EventDispatcher\Event;
 
 class Symfony implements EventDispatcher
 {
@@ -17,7 +18,8 @@ class Symfony implements EventDispatcher
     
     public function dispatch($eventName, $event = null)
     {
-        return $this->eventDispatcher->dispatch($eventName, $event);
+        $event = $event ?? new Event();
+        return $this->eventDispatcher->dispatch($event, $eventName);
     }
     
     public function addSubscriber($subscriber)
